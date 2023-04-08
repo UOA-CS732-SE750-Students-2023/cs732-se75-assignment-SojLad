@@ -1,45 +1,62 @@
-import { useState } from "react";
+import { ChangeEvent } from "react";
+import { optionType } from "./types";
 
+type PropsType = {
+    userSearch: string;
+    options: [];
+    onInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onOptionChosen: (option: optionType) => void;
+    onSearch: () => void;
+};
 
-const Home = (): JSX.Element => {
+const Home = ({
+    userSearch,
+    options,
+    onInputChange,
+    onOptionChosen,
+    onSearch,
+}: PropsType): JSX.Element => {
+    return (
+        <div
+            className="w-full md:max-w-[500px] p-4 flex flex-col text-center items-center 
+                    justify-center md:px-10 lg:p-24 h-full lg:h-[500px] bg-white 
+                    bg-opacity-20 backdrop-blur-lg drop-shadow-lg rounded text-zinc-700"
+        >
+            <div className="relative">
+                <h1 className="font-thin text-4xl font-bold">Weather Tech Demo</h1>
 
-    const [userSearch, setUserSearch] = useState('');
+                <p className="py-3">Enter a Location Below</p>
+                <div>
+                    <input
+                        type="text"
+                        value={userSearch}
+                        className="rounded py-3 px-6"
+                        onChange={onInputChange}
+                    />
 
-    const onInputChange = (event: string) => {
-        console.log(event.target.value)
-    }
-    //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
-    //7c5280fb7687def18b74ecd6decf5f1e
-  //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+                    <ul className="absolute bg-white rounded">
+                        {options.map((option: optionType, index: number) => (
+                            <li key={option.name + index}>
+                                <button
+                                    className="hover:bg-red-100 cursor-pointer text-left w-full px-2 py-1"
+                                    onClick={() => onOptionChosen(option)}
+                                >
+                                    {option.name}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
 
-    return(
-    
-    <div className="flex justify-center items-center bg-gradient-to-bl from-red-500 to-blue-800 h-[100vh] w-full">
-    <div className="w-full md:max-w-[500px] p-4 flex flex-col text-center items-center 
-                    justify-center md:px-10 lg:p-24 h-full lg:h-[5oopx] bg-white 
-                    bg-opacity-20 backdrop-blur-lg drop-shadow-lg rounded text-zinc-700">
-        <div>
-            <h1 className="text-4x1 font-thin text-4xl">
-                Weather Tech Demo
-            </h1>
-
-            <p>Enter a Location Below</p>
-
-            <input
-                type="text"
-                value={userSearch}
-                className="rounded px-3 py-3"
-                onChange={onInputChange}
-            />
-
-            <br />
-
-            <button className="px-5 py-1 border-2 border-red-100 rounded cursor-pointer">Search</button>
+                    <button
+                        className="px-3 py-2 border-2  border-red-100 rounded cursor-pointer"
+                        onClick={onSearch}
+                    >
+                        Search
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-        
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
