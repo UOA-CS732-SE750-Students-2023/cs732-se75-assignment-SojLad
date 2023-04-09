@@ -33,16 +33,14 @@ const useForecast = () => {
             `https://api.openweathermap.org/data/2.5/forecast?lat=${chosenCity.lat}&lon=${chosenCity.lon}&units=metric&appid=${apiKey}`
         )
             .then((res) => res.json())
-            .then((data) => {         
-                
-            const forecastData = {
-                ...data.city,
-                list: data.list.slice(0, 12)
-            }
+            .then((data) => {
+                const forecastData = {
+                    ...data.city,
+                    list: data.list.slice(0, 12),
+                };
 
-            setForecast(forecastData)})
-            
-            
+                setForecast(forecastData);
+            });
     };
 
     const onSearch = () => {
@@ -64,8 +62,8 @@ const useForecast = () => {
         forecast,
         onInputChange,
         onOptionChosen,
-        onSearch
-    }
-}
+        onSearch,
+    };
+};
 
 export default useForecast;

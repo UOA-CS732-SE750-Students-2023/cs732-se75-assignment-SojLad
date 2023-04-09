@@ -6,12 +6,12 @@ type Props = {
 
 const Forecast = ({ data }: Props): JSX.Element => {
     const todaysWeather = data.list[0];
-    
+
     return (
         <div
             className="w-full md:max-w-[500px] py-4 md:py-4
-        md:px-10 lg:px-24 h-full lg:h-auto bg-white bg-opacity-20
-        backdrop-blur-ls rounded drop-shadow-lg"
+        md:px-10 lg:px-24 h-full lg:h-auto bg-zinc-300 bg-opacity-20
+        rounded drop-shadow-xl"
         >
             <div className="mx-auto w-[300px]">
                 <div className="text-center">
@@ -23,7 +23,10 @@ const Forecast = ({ data }: Props): JSX.Element => {
                         &deg;C
                     </h2>
                     <p className="text-lg">
-                        {todaysWeather.weather[0].description.charAt(0).toUpperCase() + todaysWeather.weather[0].description.slice(1)}
+                        {todaysWeather.weather[0].description
+                            .charAt(0)
+                            .toUpperCase() +
+                            todaysWeather.weather[0].description.slice(1)}
                     </p>
                     <p className="text-lg">
                         H: {todaysWeather.main.temp_max.toFixed(1)}&deg;C
@@ -35,7 +38,8 @@ const Forecast = ({ data }: Props): JSX.Element => {
                         {data.list.map((item, index) => (
                             <div
                                 className="inline-block text-center w-[50px] flex-shrink-0"
-                                key={index}>
+                                key={index}
+                            >
                                 <p>
                                     {index === 0
                                         ? "Now"
@@ -48,8 +52,6 @@ const Forecast = ({ data }: Props): JSX.Element => {
                             </div>
                         ))}
                     </div>
-
-                    
                 </div>
             </div>
         </div>

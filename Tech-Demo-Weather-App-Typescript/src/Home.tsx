@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { optionType } from "./types";
+import { Link } from "react-router-dom";
 
 type PropsType = {
     userSearch: string;
@@ -23,7 +24,7 @@ const Home = ({
                     bg-opacity-20 backdrop-blur-lg drop-shadow-lg rounded text-zinc-700"
         >
             <div className="relative">
-                <h1 className="font-thin text-4xl font-bold">Weather Tech Demo</h1>
+                <h1 className="text-4xl font-bold">Weather Tech Demo</h1>
 
                 <p className="py-3">Enter a Location Below</p>
                 <div>
@@ -47,12 +48,13 @@ const Home = ({
                         ))}
                     </ul>
 
-                    <button
-                        className="px-3 py-2 border-2  border-red-100 rounded cursor-pointer"
+                    <Link
+                        to="/forecast"
                         onClick={onSearch}
+                        className="px-3 py-2 border-2 border-red-100 rounded cursor-pointer"
                     >
                         Search
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -17,11 +17,11 @@ export type forecastType = {
             };
             weather: [
                 {
-                main: string;
-                icon: string;
-                description: string;
+                    icon: string;
+                    description: string;
                 }
             ];
         }
     ];
+    timezone: number;
 };

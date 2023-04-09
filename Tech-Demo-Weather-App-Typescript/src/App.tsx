@@ -1,9 +1,8 @@
-// import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./Home";
-// import React, { ChangeEvent, useState, useEffect } from "react";
-// import { optionType } from "./types";
 import useForecast from "./useForecast";
 import Forecast from "./Forecast";
+import PageLayout from "./PageLayout";
 
 const App = (): JSX.Element => {
     const {
@@ -16,19 +15,39 @@ const App = (): JSX.Element => {
     } = useForecast();
 
     return (
-        <div className="flex justify-center items-center bg-gradient-to-bl from-red-500 to-blue-800 h-[100vh] w-full">
-            {forecast ? (
-                <Forecast data={forecast}/>
-            ) : (
-                <Home
-                    userSearch={userSearch}
-                    options={options}
-                    onInputChange={onInputChange}
-                    onOptionChosen={onOptionChosen}
-                    onSearch={onSearch}
+        <Routes>
+            <Route path="/" element={<PageLayout />}>
+                <Route index element={<Navigate to="home" replace />} />
+                <Route
+                    path="home"
+                    element={
+                        <Home
+                            userSearch={userSearch}
+                            options={options}
+                            onInputChange={onInputChange}
+                            onOptionChosen={onOptionChosen}
+                            onSearch={onSearch}
+                        />
+                    }
                 />
-            )}
-        </div>
+                <Route
+                    path="forecast"
+                    element={
+                        forecast ? (
+                            <Forecast data={forecast} />
+                        ) : (
+                            <Home
+                                userSearch={userSearch}
+                                options={options}
+                                onInputChange={onInputChange}
+                                onOptionChosen={onOptionChosen}
+                                onSearch={onSearch}
+                            />
+                        )
+                    }
+                />
+            </Route>
+        </Routes>
     );
 };
 
