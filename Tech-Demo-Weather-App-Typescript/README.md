@@ -7,24 +7,55 @@ This weather app gets the current weather of any given city in the world. The da
 
 <br>
 
+To get our weather app to run, we need to run a few commands to add dependencies and scripts.
+
+To do this, run the following command in the terminal:
+
+```sh
+npm install
+```
+
+We need to run a few more commands to get the app to run; run the follow commands in the terminal:
+
+```sh
+npm install react-router-dom
+```
+
+Now when you run the app using,
+```sh
+npm run dev
+```
+you will probably notice that we get an error saying "Failed to resolve import "/dist/output.css" from "src/main.tsx". Does this file exist?"
+
+This is because we do not have our Tailwindcss installed yet! The app cannot import what renders the app without the dependencies.
+
+To do this, install tailwindcss with Vite:
+
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+This installs tailwindcss and its peer dependencies, then generates the config files we need to run the app with tailwindcss. You might notice that we get a notification saying that tailwind.config.js and postcss.config.js already exists. This is because the repository already has it, and this command is only necessary on a new project (For your future reference).
+
+But we still need to start the Tailwind CLI build process. To do this run this code below:
+```sh
+npx tailwindcss -o ./dist/output.css --watch
+```
+
+Now you can deploy the app using:
+```sh
+npm run dev
+```
+
+<b>Please install Tailwindcss Intellisense Extension on VSCode!</b>
+
+Enter any city you wish and click on one of the available options. Click Search and you can view the weather data for that city!
 
 
 
-Tailwind
-- Really small file size after purgecss
-- Helps with development and deployment speed
-- Allows you to micromanage, each div can be individually managed easily
-- Allows you to see which css code is doing exactly what
-- dont have to worry about class name
-- does help to have the tailwind intellisense extension, otherwise you don't know what you're doing
+`Disclaimer/Notes`
 
-- JSX and TSX files can start to become large, many lines of code
-- It's not all encompassing, sometimes you have to use normal css for more unique and advanced css things.
-- normal css exists by default, tailwind requires separate installation
-- there is a learning curve to Tailwind, because everything is in acronyms.
-- Goes against the principle of having everything separate, normally html and css should be separate.
+On Windows devices, there are backwards and forwards options as well as the toolbar in the App, but in OS there are no options.
 
-- typescript is safer and prevents a lot of errors but it takes a lot longer and is frustrating.
-- the errors seem to be less descriptive and doesn't explain in an explanatory way. It explains in typescript language and what
-types should be there, but this only makes sense if you fully understand typescript
+
 
