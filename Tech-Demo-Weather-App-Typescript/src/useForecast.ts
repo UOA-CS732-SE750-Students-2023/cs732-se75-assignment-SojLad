@@ -2,6 +2,9 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { optionType } from "./types";
 
 const useForecast = () => {
+    
+    // The types for each React hook are inferred here. The type between each <> denotes
+    // that the state should be accepting values in that type only.
     const apiKey: string = `7c5280fb7687def18b74ecd6decf5f1e`;
     const [userSearch, setUserSearch] = useState<string>("");
     const [chosenCity, setChosenCity] = useState<optionType>();

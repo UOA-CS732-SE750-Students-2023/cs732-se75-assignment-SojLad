@@ -6,7 +6,8 @@ import PageLayout from "./PageLayout";
 
 const App = (): JSX.Element => {
 
-    //
+    // Destructuring assignments to get values return from the useForecast hook and
+    // making it available for the app
     const {
         userSearch,
         options,

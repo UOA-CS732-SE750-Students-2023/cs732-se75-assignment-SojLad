@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 import { optionType } from "./types";
 import { Link } from "react-router-dom";
 
+// Inferring the type for each of these props
 type PropsType = {
     userSearch: string;
     options: [];
@@ -10,6 +11,8 @@ type PropsType = {
     onSearch: () => void;
 };
 
+// Home is the default page, the props are parsed through from the functions
+// They are inferred with the type PropsType, which can be seen above as the parent type.
 const Home = ({
     userSearch,
     options,
@@ -18,6 +21,8 @@ const Home = ({
     onSearch,
 }: PropsType): JSX.Element => {
     return (
+
+        // Here we can see an example of Tailwindcss
         <div
             className="w-full md:max-w-[500px] p-4 flex flex-col text-center items-center 
                     justify-center md:px-10 lg:p-24 h-full lg:h-[500px] bg-white 

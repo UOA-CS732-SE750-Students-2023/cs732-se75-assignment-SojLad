@@ -1,3 +1,6 @@
+// Types can be inferred here in a separate file. They can be reused in other
+// parts of the code as this reduces code duplication.
+
 export type optionType = {
     name: string;
     lat: number;
