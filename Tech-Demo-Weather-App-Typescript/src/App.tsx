@@ -5,6 +5,8 @@ import Forecast from "./Forecast";
 import PageLayout from "./PageLayout";
 
 const App = (): JSX.Element => {
+
+    //
     const {
         userSearch,
         options,

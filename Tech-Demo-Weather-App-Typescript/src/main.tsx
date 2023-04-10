@@ -4,7 +4,6 @@ import App from "./App";
 import "/dist/output.css";
 import "/src/index.css";
 import { BrowserRouter } from "react-router-dom";
-import { app, BrowserWindow } from 'electron';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
